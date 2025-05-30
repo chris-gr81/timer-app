@@ -6,30 +6,18 @@ import HeaderSection from "./sections/HeaderSection/HeaderSection";
 import InputSection from "./sections/InputSection/InputSection";
 import MenuSection from "./sections/MenuSection/MenuSection";
 import type { ButtonClick } from "./types/types";
+import { useCountdownPanel } from "./hooks/UseCountdownPanel";
 
 function App(): React.ReactElement {
-  const [isRunning, setIsRunning] = useState(false);
-  const [currentTime, setCurrentTime] = useState(0);
   const [initialTime, handleChange] = useInputEvent();
-
-  useEffect(() => {
-    setCurrentTime(initialTime);
-  }, [initialTime]);
+  const { currentTime, isRunning, start } = useCountdownPanel(initialTime);
 
   const countdown = (event: ButtonClick) => {
     const id = (event.target as HTMLButtonElement).id;
-    if (id === "start") {
-      const interval = setInterval(() => {
-        setCurrentTime((prev) => {
-          if (prev <= 0) {
-            clearInterval(interval);
-            return 0;
-          }
-          return parseFloat((prev - 0.04).toFixed(3));
-        });
-      }, 40);
-    }
+
+    if (id === "start") start();
   };
+
   return (
     <main className="app">
       <HeaderSection />
