@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 export function useCountdownPanel(initialTime: number) {
   const [currentTime, setCurrentTime] = useState(initialTime);
   const [isRunning, setIsRunning] = useState(false);
-  const intervalRef = useRef(0);
+  const intervalRef = useRef<number>(0);
 
   // start
   const start = () => {
@@ -31,6 +31,7 @@ export function useCountdownPanel(initialTime: number) {
       intervalRef.current = 0;
     };
   }, [isRunning]);
+
   // updating by changing input-value
   useEffect(() => {
     setCurrentTime(initialTime);

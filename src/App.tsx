@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import "./App.scss";
 import { useInputEvent } from "./hooks/UseInputEvent";
 import DisplaySection from "./sections/DisplaySection/DisplaySection";
@@ -10,7 +9,7 @@ import { useCountdownPanel } from "./hooks/UseCountdownPanel";
 
 function App(): React.ReactElement {
   const [initialTime, handleChange] = useInputEvent();
-  const { currentTime, isRunning, start } = useCountdownPanel(initialTime);
+  const { currentTime, start } = useCountdownPanel(initialTime);
 
   const countdown = (event: ButtonClick) => {
     const id = (event.target as HTMLButtonElement).id;
