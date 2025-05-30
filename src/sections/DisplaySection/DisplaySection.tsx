@@ -1,5 +1,8 @@
-import type { DisplaySectionProbs } from "../../types/types";
 import "./DisplaySection.scss";
+
+type DisplaySectionProbs = {
+  value: number;
+};
 
 function DisplaySection({ value }: DisplaySectionProbs): React.ReactElement {
   return (

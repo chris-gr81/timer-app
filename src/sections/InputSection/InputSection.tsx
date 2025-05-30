@@ -1,6 +1,10 @@
 import InputField from "../../components/InputField";
-import type { InputSectionProps } from "../../types/types";
+import type { InputHandler } from "../../types/types";
 import "./InputSection.scss";
+
+export type InputSectionProps = {
+  handleChange: InputHandler;
+};
 
 function InputSection({ handleChange }: InputSectionProps): React.ReactElement {
   return (

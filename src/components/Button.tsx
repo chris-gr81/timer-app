@@ -1,8 +1,18 @@
+import type { ButtonClick } from "../types/types";
 import "./Button.scss";
-import type { ButtonProps } from "../types/types";
 
-function Button({ label, onClick }: ButtonProps): React.ReactElement {
-  return <button onClick={onClick}>{label}</button>;
+export type ButtonProps = {
+  label: string;
+  id: string;
+  onClick: (event: ButtonClick) => void;
+};
+
+function Button({ label, id, onClick }: ButtonProps): React.ReactElement {
+  return (
+    <button id={id} onClick={onClick}>
+      {label}
+    </button>
+  );
 }
 
 export default Button;

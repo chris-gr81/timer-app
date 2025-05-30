@@ -1,12 +1,16 @@
 import "./MenuSection.scss";
 import Button from "../../components/Button";
+import type { ButtonClick } from "../../types/types";
 
-function MenuSection(): React.ReactElement {
+type MenuSectionProps = {
+  onClick: (event: ButtonClick) => void;
+};
+function MenuSection({ onClick }: MenuSectionProps): React.ReactElement {
   return (
     <div className="menu-section">
-      <Button label="Start" onClick={() => console.log("Klick!")} />
-      <Button label="Pause" onClick={() => console.log("Klick!")} />
-      <Button label="Reset" onClick={() => console.log("Klick!")} />
+      <Button id="start" label="Start" onClick={onClick} />
+      <Button id="pause" label="Pause" onClick={() => console.log("Klick!")} />
+      <Button id="reset" label="Reset" onClick={() => console.log("Klick!")} />
     </div>
   );
 }

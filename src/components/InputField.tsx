@@ -1,5 +1,13 @@
-import type { InputProps } from "../types/types";
+import type { InputHandler } from "../types/types";
 import "./InputField.scss";
+
+type InputProps = {
+  label: string;
+  type: string;
+  id: string;
+  onChange: InputHandler;
+  placeholder?: string;
+};
 
 function InputField({
   label,
