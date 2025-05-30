@@ -6,7 +6,8 @@ export function useInputEvent(): [
 ] {
   const [inputValue, setInputValue] = useState(0);
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(Number(event.target.value));
+    const numericValue = parseFloat(event.target.value);
+    setInputValue(numericValue);
   };
   return [inputValue, handleChange];
 }
