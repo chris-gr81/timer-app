@@ -1,0 +1,20 @@
+.display-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: $color-card;
+  width: 100%;
+  border-radius: 6px;
+  padding: 1rem;
+
+  &__label {
+    font-size: 1.5rem;
+  }
+
+  &__timer {
+    font-size: 2rem;
+    font-family: $font-time;
+  }
+}
