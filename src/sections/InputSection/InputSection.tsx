@@ -4,9 +4,13 @@ import "./InputSection.scss";
 
 export type InputSectionProps = {
   handleChange: InputHandler;
+  disabled?: boolean;
 };
 
-function InputSection({ handleChange }: InputSectionProps): React.ReactElement {
+function InputSection({
+  handleChange,
+  disabled,
+}: InputSectionProps): React.ReactElement {
   return (
     <section className="input-section">
       <InputField
@@ -15,6 +19,7 @@ function InputSection({ handleChange }: InputSectionProps): React.ReactElement {
         type="number"
         placeholder="0"
         onChange={handleChange}
+        disabled={disabled}
       />
     </section>
   );

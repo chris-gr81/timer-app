@@ -9,7 +9,8 @@ import { useCountdownPanel } from "./hooks/UseCountdownPanel";
 
 function App(): React.ReactElement {
   const [initialTime, handleChange] = useInputEvent();
-  const { start, pause, reset, currentTime } = useCountdownPanel(initialTime);
+  const { start, pause, reset, currentTime, isRunning } =
+    useCountdownPanel(initialTime);
 
   const countdown = (event: ButtonClick) => {
     const id = (event.target as HTMLButtonElement).id;
@@ -22,7 +23,7 @@ function App(): React.ReactElement {
   return (
     <main className="app">
       <HeaderSection />
-      <InputSection handleChange={handleChange} />
+      <InputSection handleChange={handleChange} disabled={isRunning} />
       <DisplaySection value={currentTime ? currentTime : 0} />
       <MenuSection onClick={countdown} />
     </main>

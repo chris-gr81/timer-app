@@ -7,6 +7,7 @@ type InputProps = {
   id: string;
   onChange: InputHandler;
   placeholder?: string;
+  disabled?: boolean;
 };
 
 function InputField({
@@ -15,6 +16,7 @@ function InputField({
   id,
   onChange,
   placeholder,
+  disabled,
 }: InputProps): React.ReactElement {
   return (
     <div className="input-field">
@@ -24,6 +26,7 @@ function InputField({
         type={type}
         placeholder={placeholder}
         onChange={onChange}
+        disabled={disabled}
       />
     </div>
   );
