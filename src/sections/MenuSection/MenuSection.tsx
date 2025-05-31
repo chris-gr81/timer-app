@@ -9,8 +9,8 @@ function MenuSection({ onClick }: MenuSectionProps): React.ReactElement {
   return (
     <div className="menu-section">
       <Button id="start" label="Start" onClick={onClick} />
-      <Button id="pause" label="Pause" onClick={() => console.log("Klick!")} />
-      <Button id="reset" label="Reset" onClick={() => console.log("Klick!")} />
+      <Button id="pause" label="Pause" onClick={onClick} />
+      <Button id="reset" label="Reset" onClick={onClick} />
     </div>
   );
 }

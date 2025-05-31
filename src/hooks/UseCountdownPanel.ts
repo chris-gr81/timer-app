@@ -3,11 +3,24 @@ import { useEffect, useRef, useState } from "react";
 export function useCountdownPanel(initialTime: number) {
   const [currentTime, setCurrentTime] = useState(initialTime);
   const [isRunning, setIsRunning] = useState(false);
-  const intervalRef = useRef<number>(0);
+  const intervalRef = useRef<number>(-1);
+  const tickRate = 0.04; //
+  const intervalRate = tickRate * 1000;
 
   // start
   const start = () => {
     if (!isRunning) setIsRunning(true);
+  };
+
+  // pause
+  const pause = () => {
+    setIsRunning(false);
+  };
+
+  // reset
+  const reset = () => {
+    setIsRunning(false);
+    setCurrentTime(initialTime);
   };
 
   // Countdown-Timer
@@ -16,19 +29,19 @@ export function useCountdownPanel(initialTime: number) {
 
     intervalRef.current = setInterval(() => {
       setCurrentTime((previous) => {
-        if (previous <= 0.04) {
+        if (previous <= tickRate) {
           clearInterval(intervalRef.current);
           setIsRunning(false);
           return 0;
         }
-        return parseFloat((previous - 0.04).toFixed(3));
+        return parseFloat((previous - tickRate).toFixed(3));
       });
-    }, 40);
+    }, intervalRate);
 
     // killing old intervals
     return () => {
       clearInterval(intervalRef.current);
-      intervalRef.current = 0;
+      intervalRef.current = -1;
     };
   }, [isRunning]);
 
@@ -37,5 +50,5 @@ export function useCountdownPanel(initialTime: number) {
     setCurrentTime(initialTime);
   }, [initialTime]);
 
-  return { currentTime, isRunning, start };
+  return { currentTime, start, pause, reset, isRunning };
 }
